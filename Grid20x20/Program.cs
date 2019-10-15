@@ -21,8 +21,7 @@
         /// </summary>
         private static void SolveGrid()
         {
-            string path = @"C:\Users\BDuarte\source\repos\Grid20x20\Grid20x20\inputData.txt";
-            var gridData = GridManager.ReadGridData(path);
+            var gridData = GridManager.ReadGridData("inputData.txt");
             GridManager sg = new GridManager(gridData, 4);
             Console.WriteLine("Biggest Product in the Grid: {0:n0}", sg.SolveGrid());
         }

@@ -161,6 +161,11 @@
         /// <returns>The <see cref="int[][]"/></returns>
         public static int[][] ReadGridData(string path)
         {
+            if (!File.Exists(path))
+            {
+                return null;
+            }
+
             int[][] dataArray = new int[20][];
             string tempText = File.ReadAllText(path);
 
