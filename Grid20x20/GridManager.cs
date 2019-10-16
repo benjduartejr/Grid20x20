@@ -1,5 +1,6 @@
 ﻿namespace Grid20x20
 {
+    using System;
     using System.IO;
     using System.Linq;
 
@@ -98,18 +99,24 @@
         private int ForDiagonal1()
         {
             int greatestProduct = 0;
+            int[] best4 = new int[4];
 
             for (int i = 0; i < _grid.Length - _count + 1; i++)
             {
+                Console.WriteLine("--------------{0}------------------", i);
                 for (int j = _count - 1; j < _grid[i].Length; j++)
-                {
+                {                    
                     int tempProduct = 1;
                     for (int z = 0; z < _count; z++)
                     {
+                        int xxx = _grid[i + z][j - z];
+                        best4[z] = _grid[i + z][j - z];
+
                         tempProduct = tempProduct * _grid[i + z][j - z];
                     }
                     greatestProduct = tempProduct > greatestProduct ? tempProduct : greatestProduct;
-                }
+                    Console.WriteLine("Diagonal1: {0}x{1}x{2}x{3}", best4[0], best4[1], best4[2], best4[3]);                    
+                }                
             }
             return greatestProduct;
         }
@@ -121,18 +128,24 @@
         private int ForDiagonal2()
         {
             int greatestProduct = 0;
+            int[] best4 = new int[4];
 
             for (int i = 0; i < _grid.Length - _count + 1; i++)
             {
+                Console.WriteLine("--------------{0}------------------", i);
                 for (int j = 0; j < _grid[i].Length - _count + 1; j++)
-                {
+                {                    
                     int tempProduct = 1;
                     for (int z = 0; z < _count; z++)
                     {
+                        int xxx = _grid[i + z][j + z];
+                        best4[z] = _grid[i + z][j + z];
+                        
                         tempProduct = tempProduct * _grid[i + z][j + z];
                     }
-                    greatestProduct = tempProduct > greatestProduct ? tempProduct : greatestProduct;
-                }
+                    greatestProduct = tempProduct > greatestProduct ? tempProduct : greatestProduct;                    
+                    Console.WriteLine("Diagonal2: {0}x{1}x{2}x{3}", best4[0], best4[1], best4[2], best4[3]);                    
+                }                
             }
             return greatestProduct;
         }
